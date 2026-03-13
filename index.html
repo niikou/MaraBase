@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MaraBase</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div class="sidebar">
+<h2>MaraBase</h2>
+<a href="#photos">Photos</a>
+<a href="#address">Address</a>
+<a href="#chat">Discussion</a>
+</div>
+
+<div class="content">
+
+<div class="banner">
+<img src="images/banner.png">
+</div>
+
+<header>
+<h1>MaraBase</h1>
+<p class="subtitle">A website designed by a Marabro for Marabros</p>
+</header>
+
+<section id="photos">
+<h2>Photos</h2>
+<h3>1 years old 👶</h3>
+
+<div class="gallery">
+<img src="images/photo1.jpg" onclick="openImage(this)">
+<img src="images/photo2.jpg" onclick="openImage(this)">
+<img src="images/photo3.jpg" onclick="openImage(this)">
+</div>
+
+</section>
+
+<section id="address">
+<h2>Address 📍</h2>
+
+<p>
+Populierstraat 109<br>
+2565 MK The Hague<br>
+Netherlands
+</p>
+
+<iframe src="https://www.google.com/maps?q=Populierstraat%20109%202565%20MK%20The%20Hague%20Netherlands&output=embed"></iframe>
+</section>
+
+<section id="chat">
+<h2>Discussion anonyme 💬</h2>
+
+<form id="chatForm">
+<textarea id="message" placeholder="Écris ton message"></textarea>
+<button type="submit">Envoyer</button>
+</form>
+
+<ul id="messagesList"></ul>
+
+</section>
+
+</div>
+
+<div id="imageViewer" onclick="closeImage()">
+<img id="viewerImg">
+</div>
+
+<script>
+
+function openImage(img){
+document.getElementById("imageViewer").style.display="flex";
+document.getElementById("viewerImg").src=img.src;
+}
+
+function closeImage(){
+document.getElementById("imageViewer").style.display="none";
+}
+
+const form=document.getElementById("chatForm");
+
+form.addEventListener("submit",function(e){
+
+e.preventDefault();
+
+const msg=document.getElementById("message").value.trim();
+
+if(msg){
+
+const li=document.createElement("li");
+li.textContent="Anonyme : "+msg;
+
+document.getElementById("messagesList").appendChild(li);
+
+document.getElementById("message").value="";
+
+}
+
+});
+
+</script>
+
+</body>
+</html>
